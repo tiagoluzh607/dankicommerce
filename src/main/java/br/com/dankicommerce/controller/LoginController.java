@@ -10,6 +10,6 @@ public class LoginController {
 
 	@Get("")
 	public void login() {
-		
+		System.out.println("%%%%%%%%%%%testes");
 	}
 }
