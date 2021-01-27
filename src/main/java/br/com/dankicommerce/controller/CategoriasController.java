@@ -5,11 +5,12 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 
 @Controller
-@Path("login")
-public class LoginController {
+@Path("categorias")
+public class CategoriasController {
 
 	@Get("")
-	public void login() {
+	public void categorias() {
 		
 	}
+	
 }
