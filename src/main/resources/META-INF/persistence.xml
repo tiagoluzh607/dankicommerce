@@ -5,7 +5,7 @@
       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 	
-	<persistence-unit name="default">
+	<persistence-unit name="antigo">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
@@ -20,14 +20,14 @@
 		</properties>
 	</persistence-unit>
 	
-	<persistence-unit name="postgres" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Implementação do JPA, no nosso caso Hibernate -->
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/danki" /> <!-- 167.114.67.6 -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/dankibanco" /> <!-- 167.114.67.6 -->
             <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
             <property name="javax.persistence.jdbc.password" value="postgres" /> <!-- DB Password -->
 
