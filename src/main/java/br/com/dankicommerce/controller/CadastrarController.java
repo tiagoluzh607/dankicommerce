@@ -2,6 +2,7 @@ package br.com.dankicommerce.controller;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
@@ -24,6 +25,7 @@ public class CadastrarController {
 	@Inject Result result;
 	@Inject UsuarioDAO usuarioDao;
 	@Inject Validator validator;
+	@Inject HttpSession session;
 
 	@Get("")
 	public void cadastrar() {
@@ -39,6 +41,8 @@ public class CadastrarController {
 		validator.onErrorRedirectTo(this).cadastrar();
 
 		usuarioDao.insert(usuario);
+		
+		session.setAttribute("usuarioLogado", usuario);
 		result.redirectTo(ProdutosController.class).produtos();
 	}
 }

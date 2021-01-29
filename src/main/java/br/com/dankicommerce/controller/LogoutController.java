@@ -7,19 +7,17 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.dankicommerce.interceptors.SomenteLogado;
-import br.com.dankicommerce.model.Usuario;
-import br.com.olimposistema.aipa.service.Util;
 
 @Controller
-@Path("categorias")
-public class CategoriasController {
+@Path("logout")
+public class LogoutController {
 	
 	@Inject HttpSession session;
 	@Inject Result result;
 
-	@Get("") @SomenteLogado
-	public void categorias() {
+	@Get("")
+	public void logout() {
+		session.removeAttribute("usuarioLogado");
+		result.redirectTo(LoginController.class).login();
 	}
-	
 }
