@@ -1,5 +1,6 @@
 package br.com.dankicommerce.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Usuario extends Model {
 	@NotEmpty @Size(min = 3, max = 100, message = "{usuario.nome.size}")
 	private String nome;
 	
-	@NotEmpty @Email
+	@NotEmpty @Email @Column(unique = true)
 	private String email;
 	
 	@NotEmpty @Size(min = 6, max = 20, message = "{usuario.senha.size}")
