@@ -79,10 +79,10 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+              <img class="img-fluid" src="img/get/${produto.imagem.nome}" alt="" />
             </a>
             <div class="portfolio-caption">
-              <div class="portfolio-caption-heading">${produto.valor}</div>
+              <div class="portfolio-caption-heading">${produto.valorMoney}</div>
               <div class="portfolio-caption-subheading text-muted">
                 ${produto.nome}
               </div>
@@ -103,8 +103,8 @@
                   <div class="col-lg-8">
                     <div class="modal-body">
                       <!-- Project Details Go Here-->
-                      <img class="img-fluid d-block mx-auto img-modal" src="assets/img/portfolio/01-full.jpg" alt="" />
-                      <h2 class="text-uppercase">${produto.valor}</h2>
+                      <img class="img-fluid d-block mx-auto img-modal" src="img/get/${produto.imagem.nome}" alt="" />
+                      <h2 class="text-uppercase">${produto.valorMoney}</h2>
                       <p class="item-intro text-muted">
                         ${produto.nome}
                       </p>
@@ -112,7 +112,7 @@
                         ${produto.descricao}
                       </p>
                       <ul class="list-inline">
-                        <li>Valido Até: ${produto.dataValidade}</li>                     
+                        <li>Valido Até: ${produto.dataValidadeFormatada}</li>                     
                       </ul>
                       <div class="d-flex justify-content-center">
                         <div class="form-group mb-md-0 ml-2">
