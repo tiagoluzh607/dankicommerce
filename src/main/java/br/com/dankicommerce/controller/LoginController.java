@@ -46,6 +46,6 @@ public class LoginController {
 		session.setAttribute("usuarioLogado", usuario);
 		
 		//autenticar usuario
-		result.redirectTo(ProdutosController.class).produtos();
+		result.redirectTo(ProdutosController.class).produtos(null);
 	}
 }

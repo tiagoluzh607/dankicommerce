@@ -35,7 +35,7 @@ public class FormProdutoController {
 	public void salvaProduto(@Valid Produto produto) {
 		validator.onErrorRedirectTo(this).formproduto();
 		produtoDao.insertOrUpdate(produto);
-		result.redirectTo(ProdutosController.class).produtos();
+		result.redirectTo(ProdutosController.class).produtos(null);
 	}
 	
 	

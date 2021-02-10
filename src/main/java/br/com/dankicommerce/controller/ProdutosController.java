@@ -5,7 +5,11 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.interceptor.IncludeParameters;
+import br.com.caelum.vraptor.view.Results;
+import br.com.dankicommerce.model.Categoria;
 import br.com.dankicommerce.model.Produto;
 import br.com.olimposistema.aipa.dao.DAO;
 
@@ -15,9 +19,20 @@ public class ProdutosController {
 	
 	@Inject Result result;
 	@Inject DAO<Produto> produtoDao;
+	@Inject DAO<Categoria> categoriaDao;
 
+	@IncludeParameters
 	@Get("")
-	public void produtos() {
-		result.include("produtos", produtoDao.selectAll());
+	@Post("")
+	public void produtos(Produto filtro) {
+		result.include("categorias",categoriaDao.selectAll());
+		
+		if(filtro == null ) {
+			result.include("produtos", produtoDao.selectAll());
+		}else {
+			result.include("produtos", produtoDao.filter(filtro));
+		}	
 	}
+	
+	
 }
