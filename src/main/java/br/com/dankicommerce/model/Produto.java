@@ -22,6 +22,7 @@ import br.com.dankicommerce.rn.FormataDeDoubleParaReais;
 import br.com.olimposistema.aipa.dao.filter.FiltrableName;
 import br.com.olimposistema.aipa.imagem.Imagem;
 import br.com.olimposistema.aipa.model.Model;
+import br.com.olimposistema.aipa.vraptorcrud.SerializeCrud;
 
 @Entity
 public class Produto extends Model {
@@ -48,6 +49,7 @@ public class Produto extends Model {
 		fetch = FetchType.EAGER, 
 		orphanRemoval = true  
 	)
+	@SerializeCrud
 	private Imagem imagem;
 
 	public String getNome() {
