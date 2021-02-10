@@ -38,7 +38,14 @@
                     <h2 class="section-heading text-uppercase">Novo Produto/Editar Produto</h2>
                     
                 </div>
-                <form>
+                <c:if test="${not empty errors}">
+                	<div class="alert alert-danger" role="alert">
+                  	<c:forEach var="error" items="${errors}">
+                     ${error.message}<br/>
+                  	</c:forEach>
+                	</div>
+              	</c:if>
+                <form method="post" action="<c:url value="formproduto/salvaProduto"/>">
                     <div class="row justify-content-md-center mb-5 text-center">
                         <div class="col-md-12 align-self-center text-center">
                             <div class="form-group input-login mx-auto">
@@ -46,32 +53,38 @@
                                  <p class="help-block text-danger"></p>
                              </div>
                             <div class="form-group input-login mx-auto">
-                                <input class="form-control" id="email" type="text" placeholder="Nome *" required="required" data-validation-required-message="Digite o Nome do Produto." />
+                                <input name="produto.nome" value="${produto.nome}" class="form-control" id="email" type="text" placeholder="Nome *" required="required" data-validation-required-message="Digite o Nome do Produto." />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group input-login mx-auto">
-                                <input class="form-control money" id="valor" type="tel" placeholder="Valor em R$*" required="required" data-validation-required-message="Digite o Valor do Produto." />                            
+                                <input name="produto.valor" value="${produto.valor}" class="form-control money" id="valor" type="tel" placeholder="Valor em R$*" required="required" data-validation-required-message="Digite o Valor do Produto." />                            
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group input-login mx-auto">
-                               <textarea class="form-control" placeholder="Descreva o Produto"></textarea>
-                               </textarea>
+                               
+                               <textarea name="produto.descricao" class="form-control" placeholder="Descreva o Produto">${produto.descricao}</textarea>
+                               
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
-                                <select class="form-control input-login mx-auto" id="email" required="required"
+                                <select name="produto.categoria.id" class="form-control input-login mx-auto" id="email" required="required"
                                   data-validation-required-message="Please enter your email address.">
-                                  <option>Roupas</option>
-                                  <option>AcessÃ³rios</option>
+                                  
+                                  <c:forEach var="categoria" items="${categorias}">
+                                  	<option value="${categoria.id}">${categoria.nome}</option>
+                                  </c:forEach>
+                                  
+                                  
+                 
                                 </select>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group input-login mx-auto">
-                                <input class="form-control date-br" id="valor" type="date" placeholder="Data Validade *" required="required" data-validation-required-message="Digite a data de Validade do Produto" />
+                                <input class="form-control date-br" id="valor" type="date" placeholder="Data Validade *"  data-validation-required-message="Digite a data de Validade do Produto" />
                                 <p class="help-block text-danger"></p>
                             </div>
                            
-                            <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" >Salvar</button>
+                            <button type="submit" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" >Salvar</button>
                         </div> 
                     </div>
                 </form>
