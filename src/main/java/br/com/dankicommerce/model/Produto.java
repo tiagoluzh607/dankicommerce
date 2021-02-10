@@ -3,8 +3,11 @@ package br.com.dankicommerce.model;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
@@ -15,6 +18,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.dankicommerce.rn.ConverteDataDeEnParaCalendar;
+import br.com.olimposistema.aipa.imagem.Imagem;
 import br.com.olimposistema.aipa.model.Model;
 
 @Entity
@@ -34,6 +38,14 @@ public class Produto extends Model {
 	
 	@Temporal(TemporalType.DATE) @NotNull(message = "{produto.dataValidade.notnull}")
 	private Calendar dataValidade;
+	
+	
+	@OneToOne(
+		cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE}, 
+		fetch = FetchType.EAGER, 
+		orphanRemoval = true  
+	)
+	private Imagem imagem;
 
 	public String getNome() {
 		return nome;
@@ -79,6 +91,13 @@ public class Produto extends Model {
 		if(data == null) return;	
 		this.dataValidade = new ConverteDataDeEnParaCalendar().executa(data);
 	}
-	
+
+	public Imagem getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(Imagem imagem) {
+		this.imagem = imagem;
+	}
 	
 }
