@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.dankicommerce.rn.ConverteDataDeEnParaCalendar;
 import br.com.dankicommerce.rn.FormataDeDoubleParaReais;
+import br.com.olimposistema.aipa.dao.filter.FiltrableName;
 import br.com.olimposistema.aipa.imagem.Imagem;
 import br.com.olimposistema.aipa.model.Model;
 
@@ -26,6 +27,7 @@ import br.com.olimposistema.aipa.model.Model;
 public class Produto extends Model {
 	
 	@NotEmpty(message = "{produto.nome.notempty}") @Size(min = 3, max = 150, message = "{produto.nome.size}")
+	@FiltrableName
 	private String nome;
 	
 	@NotEmpty(message = "{produto.descricao.notempty}") @Type(type="text")
